@@ -77,7 +77,7 @@ tmp <- tmp %>%
   mutate(pred_tot = ifelse(abs(pred_tot - 0.5) < 1.96*sqrt((pred_tot*(1-pred_tot))/cnt_tot),
                            NA, pred_tot),
          pred = pred_tot,
-         pred = ifelse(is.na(pred), sigmoid(pred_1st + pred_2nd - 1), pred),
+         pred = ifelse(is.na(pred), sigmoid((pred_1st + pred_2nd - 1)*4), pred),
          pred = ifelse(is.na(pred), runif(1), pred))
 
 #performance
